@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Button, Col, Image, ListGroupItem, Row } from 'react-bootstrap';
+import Avatar from 'react-avatar'
 
 import { styles } from './styles.scss';
 
@@ -16,13 +17,18 @@ export class Person extends Component {
       <ListGroupItem className={`${styles}`}>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Name
+            <Avatar className="avatar" color="#000000" round={ true } name={ person.name } />
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.name } 
-          </Col>
-        </Row>
-        <Row>
+            <Row>
+              <Col xs={12} md={12} sm={12} lg={3}>
+                Name
+              </Col>
+              <Col xs={12} md={12} sm={12} lg={6}>
+                { person.name } 
+              </Col>
+            </Row>
+            <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
             Height
           </Col>
@@ -64,9 +70,13 @@ export class Person extends Component {
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={12}>
-            <Link className="pull-right" to={`people/${id}`}>See details</Link>
+            <Link className="pull-right" to={`people/${id}/`}>See details</Link>
           </Col>
         </Row>
+          </Col>
+          
+        </Row>
+        
       </ListGroupItem>
     );
   };

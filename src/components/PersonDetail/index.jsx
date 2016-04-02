@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Button, Col, Image, Panel, Row } from 'react-bootstrap';
-import { RowLinkParser } from 'components/RowLinkParser'
+import { RowLinkParser } from 'components/RowLinkParser';
+import Avatar from 'react-avatar'
 import { styles } from './styles.scss';
 
 export class PersonDetail extends Component {
@@ -14,6 +15,9 @@ export class PersonDetail extends Component {
     
     return (
       <Panel className={`${styles}`}>
+        <div className="avatar-wrapper">
+          <Avatar className="avatar"  color="#000000" round={ true } name={ person.name } />
+        </div>  
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
             Name
