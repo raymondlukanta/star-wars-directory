@@ -4,12 +4,14 @@ import { Col, Row } from 'react-bootstrap';
 
 export class RowLinkParser extends Component {
   static propTypes = {
-    link: PropTypes.string
+    link: PropTypes.string,
+    child: PropTypes.node
   };
 
   render() {
     const { 
-      link
+      link,
+      child
     } = this.props;
 
     let splittedLink = link.split("/");
@@ -20,7 +22,7 @@ export class RowLinkParser extends Component {
       <Row>
         <Col xs={12} md={12} sm={12} lg={12}>
           <Link to={`${entity}/${id}`}>
-            {entity} - {id}
+            { child || <div>{`${entity} ${id}`}</div>}
           </Link>
         </Col>
       </Row>

@@ -1,8 +1,6 @@
 import { PeopleActionTypes } from '../actions/people'
 
 export default function pagination(state = {companies_paging:{ids: []}}, action) {
-  console.log("action")
-  console.log(action)
   switch (action.type) {
     case PeopleActionTypes.READ_PEOPLE_SUCCESS:
       return Object.assign({}, state, {

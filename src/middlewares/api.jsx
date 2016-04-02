@@ -25,11 +25,8 @@ function callApi(endpoint, option, schema) {
         let resultObjects;
 
         if (json.results) {
-          console.log("json.results")
           resultObjects = json.results;
         } else {
-          console.log("NOT json.results")
-
           resultObjects = json;
         }
           return Object.assign({}, normalize(resultObjects, schema), {next: json.next});
@@ -52,8 +49,7 @@ export default store => next => action => {
 
   let { endpoint } = callAPI;
   const { schema, method, body, types, meta } = callAPI;
-console.log("endpoint")
-  console.log(endpoint)
+
   if (typeof endpoint === 'function') {
     endpoint = endpoint(store.getState());
   }

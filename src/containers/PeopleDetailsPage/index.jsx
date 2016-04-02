@@ -77,10 +77,6 @@ export class PeopleDetailsPage extends Component {
       return(<div>Loading</div>)
     }
     let person = people[params.id]
-    console.log("params.id")
-    console.log(params.id)
-    console.log("people")
-    console.log(people)
     return (
       <section className={`${styles}`}>       
         <DocumentMeta {...metaData} />

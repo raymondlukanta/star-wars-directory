@@ -2,6 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Button, Col, Image, Panel, Row } from 'react-bootstrap';
 import { RowLinkParser } from 'components/RowLinkParser';
+import { FilmIcon } from 'components/FilmIcon';
+import { VehicleIcon } from 'components/VehicleIcon';
+import { StarshipIcon } from 'components/StarshipIcon';
 import Avatar from 'react-avatar'
 import { styles } from './styles.scss';
 
@@ -92,18 +95,6 @@ export class PersonDetail extends Component {
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Films
-          </Col>
-          <Col xs={12} md={12} sm={12} lg={9}>
-            { 
-              person.films.map((film) => {
-                return (<RowLinkParser key= { film } link={ film }></RowLinkParser>)
-              })
-            }
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} md={12} sm={12} lg={3}>
             Species
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
@@ -115,25 +106,38 @@ export class PersonDetail extends Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={12} sm={12} lg={3}>
-            Vehicles
+          <Col xs={12} md={12} sm={12} lg={12}>
+            <h4>Films</h4>
           </Col>
-          <Col xs={12} md={12} sm={12} lg={9}>
+          <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
+            { 
+              person.films.map((film) => {
+                return <FilmIcon key={ film } link={ film } />
+              })
+            }
+          </Col>
+        </Row>
+        
+        <Row>
+          <Col xs={12} md={12} sm={12} lg={12}>
+            <h4>Vehicles</h4>
+          </Col>
+          <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
             { 
               person.vehicles.map((vehicle) => {
-                return (<RowLinkParser key= { vehicle } link={ vehicle }></RowLinkParser>)
+                return <VehicleIcon key={ vehicle } link={ vehicle } />
               })
             } 
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={12} sm={12} lg={3}>
-            Starships
+          <Col xs={12} md={12} sm={12} lg={12}>
+            <h4>Starships</h4>
           </Col>
-          <Col xs={12} md={12} sm={12} lg={9}>
+          <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
             { 
               person.starships.map((starship) => {
-                return (<RowLinkParser key= { starship } link={ starship }></RowLinkParser>)
+                return <StarshipIcon key={ starship } link={ starship } />
               })
             }
           </Col>
