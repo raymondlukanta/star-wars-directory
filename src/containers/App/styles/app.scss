@@ -1,0 +1,138 @@
+/* global styles */
+
+@import 'fonts/roboto';
+@import 'typography';
+@import 'links';
+
+:global(body) {
+  position: relative;
+
+  h1 {
+    margin-top: 80px;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .page-container {
+    padding-top: 120px;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.meta {
+  color: #b6b6b6;
+}
+
+.issue-detail-tab {
+  padding-top: 20px;
+}
+
+.pagination ul {
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.pagination > li {
+    display: inline-block !important;
+}
+
+.pagination .break a {
+    cursor: default;
+}
+
+.pagination-page {
+  padding-top: 50px;
+}
+
+.page-header {
+  padding-bottom:0;
+}
+
+.header {
+  padding-bottom: 40px;
+}
+
+.actor-large-thumb-container {
+  vertical-align: top;
+  padding-top: 10px;
+  text-align: center;
+}
+.actor-large-thumb {
+  width: 100px;
+      height: 100px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      border-radius: 50px;
+}
+
+.filter {
+  padding-left: 0;
+  padding-bottom: 20px;
+  display: inline-flex;
+}
+.filter .status {
+  padding-right: 10px;
+  top: 10;
+}
+.filter .dropdown {
+  margin-top: 3px;
+}
+.filter .add-issue-button {
+  height: 34px;
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+.add-issue-button {
+  margin: 20px 0;
+}
+
+#login-dp{
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow:hidden;
+    background-color:rgba(255,255,255,1);
+    right: 0;
+}
+#login-dp .help-block a{
+    font-size:12px;
+    color:#337ab7;
+}
+#login-dp .bottom{
+    background-color:rgba(255,255,255,1);
+    border-top:1px solid #ddd;
+    clear:both;
+    padding:14px;
+}
+#login-dp .bottom a{
+    color: #337ab7;
+}
+#login-dp .social-buttons{
+    margin:12px 0    
+}
+#login-dp .social-buttons a{
+    width: 49%;
+}
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+.dropdown-menu {
+  left:30%;
+}
+@media(max-width:768px){
+    #login-dp{
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom{
+        background-color: inherit;
+        border-top:0 none;
+    }
+}
