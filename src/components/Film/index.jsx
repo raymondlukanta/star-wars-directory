@@ -5,72 +5,64 @@ import Avatar from 'react-avatar';
 
 import { styles } from './styles.scss';
 
-export class Person extends Component {
+export class Film extends Component {
   render() {
     const { 
-      person
+      film
     } = this.props;
 
-    let id = person.url.split("/")[5];
+    let id = film.url.split("/")[5];
     
     return (
       <ListGroupItem className={`${styles}`}>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            <Avatar className="avatar" color="#000000" round={ true } name={ person.name } />
+            <Avatar className="avatar" color="#000000" round={ true } name={ film.title } />
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
             <Row>
               <Col xs={12} md={12} sm={12} lg={3}>
-                Name
+                Title
               </Col>
-              <Col xs={12} md={12} sm={12} lg={6}>
-                { person.name } 
+              <Col xs={12} md={12} sm={12} lg={9}>
+                { film.title } 
               </Col>
             </Row>
             <Row>
               <Col xs={12} md={12} sm={12} lg={3}>
-                Height
+                Episode
               </Col>
               <Col xs={12} md={12} sm={12} lg={9}>
-                { person.height } 
+                { film.episode_id } 
               </Col>
             </Row>
             <Row>
               <Col xs={12} md={12} sm={12} lg={3}>
-                Mass
+                Director
               </Col>
               <Col xs={12} md={12} sm={12} lg={9}>
-                { person.mass } 
+                { film.director } 
               </Col>
             </Row>
             <Row>
               <Col xs={12} md={12} sm={12} lg={3}>
-                Hair Color
+                Producer
               </Col>
               <Col xs={12} md={12} sm={12} lg={9}>
-                { person.hair_color } 
+                { film.producer } 
               </Col>
             </Row>
             <Row>
               <Col xs={12} md={12} sm={12} lg={3}>
-                Skin Color
+                Release Date
               </Col>
               <Col xs={12} md={12} sm={12} lg={9}>
-                { person.skin_color } 
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12} md={12} sm={12} lg={3}>
-                Eye Color
-              </Col>
-              <Col xs={12} md={12} sm={12} lg={9}>
-                { person.eye_color } 
+                { film.release_date } 
               </Col>
             </Row>
             <Row>
               <Col xs={12} md={12} sm={12} lg={12}>
-                <Link className="pull-right" to={`people/${id}/`}>See details</Link>
+                <Link className="pull-right" to={`films/${id}/`}>See details</Link>
               </Col>
             </Row>
           </Col>

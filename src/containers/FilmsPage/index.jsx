@@ -3,12 +3,11 @@ import DocumentMeta from 'react-document-meta';
 import { TitleMetaContent, DescriptionMetaContent, KeywordsMetaContent } from 'utils/constants';
 
 import { Col, ListGroup, Row } from 'react-bootstrap';
-
-import { Person } from 'components/Person';
+import { Film } from 'components/Film';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loadReadPeopleList } from 'actions/people';
+import { loadReadFilmsList } from 'actions/films';
 
 import { styles } from './styles.scss';
 
@@ -27,21 +26,21 @@ const metaData = {
 
 function mapStateToProps(state) {
   const {
-    entities: { people },
-    pagination: { people_paging }
+    entities: { films },
+    pagination: { films_paging }
   } = state;
 
   return {
-    people,
-    peoplePaging: people_paging
+    films,
+    filmsPaging: films_paging
   };
 }
 
 @connect(
   mapStateToProps,
-  dispatch => bindActionCreators({ loadReadPeopleList }, dispatch)
+  dispatch => bindActionCreators({ loadReadFilmsList }, dispatch)
 )
-export class PeoplePage extends Component {
+export class FilmsPage extends Component {
   constructor(props) {
     super(props);
     this._handleLoadMore = this._handleLoadMore.bind(this);
@@ -49,19 +48,19 @@ export class PeoplePage extends Component {
 
   componentWillMount() {
     const {
-      loadReadPeopleList
+      loadReadFilmsList
     } = this.props;
 
-    loadReadPeopleList(1);
+    loadReadFilmsList(1);
   }
 
   render() {  
     const {
-       people,
-       peoplePaging
+       films,
+       filmsPaging
     } = this.props;
 
-    if (!people || !peoplePaging) {
+    if (!films || !filmsPaging) {
       return(<div>Loading</div>)
     }
     return (
@@ -76,10 +75,10 @@ export class PeoplePage extends Component {
                 <InfiniteScroll
                   pageStart= "1"
                   loadMore= { this._handleLoadMore }
-                  hasMore= { peoplePaging.next_url }
+                  hasMore= { filmsPaging.next_url }
                   loader= {<div className="loader">Loading ...</div>}>
                     {
-                     Object.keys(people).map((id) => <Person key={ id } person={people[id]}/>)
+                     Object.keys(films).map((id) => <Film key={ id } film={films[id]}/>)
                     }
                 </InfiniteScroll>
                 </ListGroup>
@@ -93,12 +92,12 @@ export class PeoplePage extends Component {
 
   _handleLoadMore() {
     const {
-      peoplePaging
+      filmsPaging
     } = this.props;
 
-    if (peoplePaging) {
-      let nextPage = peoplePaging.next_url.split("=")[1];
-      this.props.loadReadPeopleList(nextPage);
+    if (filmsPaging) {
+      let nextPage = filmsPaging.next_url.split("=")[1];
+      this.props.loadReadFilmsList(nextPage);
     } 
   }
 }

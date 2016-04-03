@@ -3,12 +3,11 @@ import DocumentMeta from 'react-document-meta';
 import { TitleMetaContent, DescriptionMetaContent, KeywordsMetaContent } from 'utils/constants';
 
 import { Col, ListGroup, Row } from 'react-bootstrap';
-
-import { Person } from 'components/Person';
+import { Species } from 'components/Species';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loadReadPeopleList } from 'actions/people';
+import { loadReadSpeciesList } from 'actions/species';
 
 import { styles } from './styles.scss';
 
@@ -27,21 +26,21 @@ const metaData = {
 
 function mapStateToProps(state) {
   const {
-    entities: { people },
-    pagination: { people_paging }
+    entities: { species },
+    pagination: { species_paging }
   } = state;
 
   return {
-    people,
-    peoplePaging: people_paging
+    speciesList: species,
+    speciesPaging: species_paging
   };
 }
 
 @connect(
   mapStateToProps,
-  dispatch => bindActionCreators({ loadReadPeopleList }, dispatch)
+  dispatch => bindActionCreators({ loadReadSpeciesList }, dispatch)
 )
-export class PeoplePage extends Component {
+export class SpeciesPage extends Component {
   constructor(props) {
     super(props);
     this._handleLoadMore = this._handleLoadMore.bind(this);
@@ -49,19 +48,19 @@ export class PeoplePage extends Component {
 
   componentWillMount() {
     const {
-      loadReadPeopleList
+      loadReadSpeciesList
     } = this.props;
 
-    loadReadPeopleList(1);
+    loadReadSpeciesList(1);
   }
 
   render() {  
     const {
-       people,
-       peoplePaging
+       speciesList,
+       speciesPaging
     } = this.props;
 
-    if (!people || !peoplePaging) {
+    if (!speciesList || !speciesPaging) {
       return(<div>Loading</div>)
     }
     return (
@@ -76,10 +75,10 @@ export class PeoplePage extends Component {
                 <InfiniteScroll
                   pageStart= "1"
                   loadMore= { this._handleLoadMore }
-                  hasMore= { peoplePaging.next_url }
+                  hasMore= { speciesPaging.next_url }
                   loader= {<div className="loader">Loading ...</div>}>
                     {
-                     Object.keys(people).map((id) => <Person key={ id } person={people[id]}/>)
+                     Object.keys(speciesList).map((id) => <Species key={ id } species={speciesList[id]}/>)
                     }
                 </InfiniteScroll>
                 </ListGroup>
@@ -93,12 +92,12 @@ export class PeoplePage extends Component {
 
   _handleLoadMore() {
     const {
-      peoplePaging
+      speciesPaging
     } = this.props;
 
-    if (peoplePaging) {
-      let nextPage = peoplePaging.next_url.split("=")[1];
-      this.props.loadReadPeopleList(nextPage);
+    if (speciesPaging) {
+      let nextPage = speciesPaging.next_url.split("=")[1];
+      this.props.loadReadSpeciesList(nextPage);
     } 
   }
 }

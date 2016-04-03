@@ -1,156 +1,127 @@
 import React, { Component, PropTypes } from 'react';
 import { Col, Panel, Row } from 'react-bootstrap';
-import { RowLinkParser } from 'components/RowLinkParser';
 import { FilmIcon } from 'components/FilmIcon';
-import { VehicleIcon } from 'components/VehicleIcon';
-import { StarshipIcon } from 'components/StarshipIcon';
+import { PersonIcon } from 'components/PersonIcon';
 import Avatar from 'react-avatar';
 import { styles } from './styles.scss';
 
-export class PersonDetail extends Component {
+export class PlanetDetail extends Component {
   static propTypes = {
-    person: PropTypes.object.isRequired
+    planet: PropTypes.object.isRequired
   };
 
   render() {
     const { 
-      person
+      planet
     } = this.props;
 
-    let id = person.url.split("/")[5];
+    let id = planet.url.split("/")[5];
     
     return (
       <Panel className={`${styles}`}>
         <div className="avatar-wrapper">
-          <Avatar className="avatar"  color="#000000" round={ true } name={ person.name } />
+          <Avatar className="avatar"  color="#000000" round={ true } name={ planet.name } />
         </div>  
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
             Name
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.name } 
+            { planet.name } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Height
+            Rotation Period
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.height } 
+            { planet.rotation_period } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Mass
+            Orbital Period
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.mass } 
+            { planet.orbital_period } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Hair Color
+            Diameter
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.hair_color } 
+            { planet.diameter } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Skin Color
+            Climate
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.skin_color } 
+            { planet.climate } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Eye Color
+            Gravity
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.eye_color } 
+            { planet.gravity } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Birth Year
+            Terrain
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.birth_year } 
+            { planet.terrain } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Gender
+            Surface Water
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.gender } 
+            { planet.surface_water } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Homeworld
+            Population
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            <RowLinkParser link={ person.homeworld } /> 
+            { planet.population } 
           </Col>
         </Row>
-        { person.species.length > 0 &&
+        
+        { planet.residents.length > 0 &&
           <Row>
-            <Col xs={12} md={12} sm={12} lg={3}>
-              Species
+            <Col xs={12} md={12} sm={12} lg={12}>
+              <h4>Residents</h4>
             </Col>
-            <Col xs={12} md={12} sm={12} lg={9}>
+            <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
               { 
-                person.species.map((species) => {
-                  return (<RowLinkParser key= { species } link={ species } />)
+                planet.residents.map((person) => {
+                  return <PersonIcon key={ person } link={ person } />
                 })
               }
             </Col>
           </Row>
         }
-        { person.films.length > 0 &&
+        { planet.films.length > 0 &&
           <Row>
             <Col xs={12} md={12} sm={12} lg={12}>
               <h4>Films</h4>
             </Col>
             <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
               { 
-                person.films.map((film) => {
+                planet.films.map((film) => {
                   return <FilmIcon key={ film } link={ film } />
-                })
-              }
-            </Col>
-          </Row>
-        }
-        { person.vehicles.length > 0 &&
-          <Row>
-            <Col xs={12} md={12} sm={12} lg={12}>
-              <h4>Vehicles</h4>
-            </Col>
-            <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
-              { 
-                person.vehicles.map((vehicle) => {
-                  return <VehicleIcon key={ vehicle } link={ vehicle } />
                 })
               } 
             </Col>
           </Row>
-        }
-        { person.starships.length > 0 &&
-          <Row>
-            <Col xs={12} md={12} sm={12} lg={12}>
-              <h4>Starships</h4>
-            </Col>
-            <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
-              { 
-                person.starships.map((starship) => {
-                  return <StarshipIcon key={ starship } link={ starship } />
-                })
-              }
-            </Col>
-          </Row> 
         }
       </Panel>
     );

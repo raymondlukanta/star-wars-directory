@@ -35,12 +35,12 @@ export class FilmIcon extends Component {
 
   _decideIcon(id) {
     switch(id) {
-      case "1": return episode1Img;
-      case "2": return episode2Img;
-      case "3": return episode3Img;
-      case "4": return episode4Img;
-      case "5": return episode5Img;
-      case "6": return episode6Img;
+      case "1": return episode4Img;
+      case "2": return episode5Img;
+      case "3": return episode6Img;
+      case "4": return episode1Img;
+      case "5": return episode2Img;
+      case "6": return episode3Img;
       case "7": return episode7Img;
     }
   }

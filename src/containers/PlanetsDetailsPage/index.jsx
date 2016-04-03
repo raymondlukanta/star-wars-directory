@@ -3,11 +3,11 @@ import DocumentMeta from 'react-document-meta';
 import { TitleMetaContent, DescriptionMetaContent, KeywordsMetaContent } from 'utils/constants';
 
 import { Col, Row } from 'react-bootstrap';
-import { PersonDetail } from 'components/PersonDetail';
+import { PlanetDetail } from 'components/PlanetDetail';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loadReadPerson } from 'actions/people'
+import { loadReadPlanet } from 'actions/planets'
 
 import { styles } from './styles.scss';
 
@@ -24,19 +24,19 @@ const metaData = {
 
 function mapStateToProps(state) {
   const {
-    entities: { people }
+    entities: { planets }
   } = state;
   
   return {
-    people
+    planets
   }
 }
 
 @connect(
   mapStateToProps,
-  dispatch => bindActionCreators({ loadReadPerson }, dispatch)
+  dispatch => bindActionCreators({ loadReadPlanet }, dispatch)
 )
-export class PeopleDetailsPage extends Component {
+export class PlanetsDetailsPage extends Component {
     constructor(props) {
       super(props);
     }
@@ -44,37 +44,37 @@ export class PeopleDetailsPage extends Component {
     componentWillMount() {
       const {
         params,
-        loadReadPerson
+        loadReadPlanet
       } = this.props;
 
-      loadReadPerson(params.id);
+      loadReadPlanet(params.id);
     }
 
     componentDidUpdate(prevProps) {
       const {
         params,
-        loadReadPerson
+        loadReadPlanet
       } = this.props;
     
-      let oldPersonId = prevProps.params.id;
-      let newPersonId = params.id;
-      if (newPersonId !== oldPersonId) {
-        loadReadPerson(newPersonId);
+      let oldPlanetId = prevProps.params.id;
+      let newPlanetId = params.id;
+      if (newPlanetId !== oldPlanetId) {
+        loadReadPlanet(newPlanetId);
       }
     }
 
   render() {  
     const {
       params,
-      people
+      planets
     } = this.props;
 
-    if (!people ) {
+    if (!planets ) {
       return(<div>Loading</div>);
     }
 
-    let person = people[params.id];
-    if (!person) {
+    let planet = planets[params.id];
+    if (!planet) {
       return(<div>Loading</div>);
     }
 
@@ -86,7 +86,7 @@ export class PeopleDetailsPage extends Component {
           <div className="container">
             <Row>
               <Col xs={6} md={6} sm={6} lg={6} xsOffset={3} mdOffset={3} smOffset={3} lgOffset={3}>
-                <PersonDetail person={ person } />
+                <PlanetDetail planet={ planet } />
               </Col>
             </Row>
           </div>

@@ -36,7 +36,7 @@ function fetchReadSpecies(speciesId) {
   };
 }
 
-export function loadReadSpecie(speciesId) {
+export function loadReadSpecies(speciesId) {
   return (dispatch, getState) => {
     return dispatch(fetchReadSpecies(speciesId));
   };

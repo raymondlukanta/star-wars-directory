@@ -1,157 +1,149 @@
 import React, { Component, PropTypes } from 'react';
 import { Col, Panel, Row } from 'react-bootstrap';
 import { RowLinkParser } from 'components/RowLinkParser';
-import { FilmIcon } from 'components/FilmIcon';
+import { PlanetIcon } from 'components/PlanetIcon';
+import { PersonIcon } from 'components/PersonIcon';
 import { VehicleIcon } from 'components/VehicleIcon';
 import { StarshipIcon } from 'components/StarshipIcon';
 import Avatar from 'react-avatar';
 import { styles } from './styles.scss';
 
-export class PersonDetail extends Component {
+export class FilmDetail extends Component {
   static propTypes = {
-    person: PropTypes.object.isRequired
+    film: PropTypes.object.isRequired
   };
 
   render() {
     const { 
-      person
+      film
     } = this.props;
 
-    let id = person.url.split("/")[5];
+    let id = film.url.split("/")[5];
     
     return (
       <Panel className={`${styles}`}>
         <div className="avatar-wrapper">
-          <Avatar className="avatar"  color="#000000" round={ true } name={ person.name } />
+          <Avatar className="avatar"  color="#000000" round={ true } name={ film.title } />
         </div>  
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Name
+            Title
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.name } 
+            { film.title } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Height
+            Episode
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.height } 
+            { film.episode_id } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Mass
+            Opening Crawl
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.mass } 
+            { film.opening_crawl } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Hair Color
+            Director
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.hair_color } 
+            { film.director } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Skin Color
+            Producer
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.skin_color } 
+            { film.producer } 
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            Eye Color
+            Release Date
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
-            { person.eye_color } 
+            { film.release_date } 
           </Col>
         </Row>
-        <Row>
-          <Col xs={12} md={12} sm={12} lg={3}>
-            Birth Year
-          </Col>
-          <Col xs={12} md={12} sm={12} lg={9}>
-            { person.birth_year } 
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} md={12} sm={12} lg={3}>
-            Gender
-          </Col>
-          <Col xs={12} md={12} sm={12} lg={9}>
-            { person.gender } 
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} md={12} sm={12} lg={3}>
-            Homeworld
-          </Col>
-          <Col xs={12} md={12} sm={12} lg={9}>
-            <RowLinkParser link={ person.homeworld } /> 
-          </Col>
-        </Row>
-        { person.species.length > 0 &&
-          <Row>
-            <Col xs={12} md={12} sm={12} lg={3}>
-              Species
-            </Col>
-            <Col xs={12} md={12} sm={12} lg={9}>
-              { 
-                person.species.map((species) => {
-                  return (<RowLinkParser key= { species } link={ species } />)
-                })
-              }
-            </Col>
-          </Row>
-        }
-        { person.films.length > 0 &&
+        { film.characters.length > 0 &&
           <Row>
             <Col xs={12} md={12} sm={12} lg={12}>
-              <h4>Films</h4>
+              <h4>Characters</h4>
             </Col>
             <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
               { 
-                person.films.map((film) => {
-                  return <FilmIcon key={ film } link={ film } />
+                film.characters.map((person) => {
+                  return <PersonIcon key={ person } link={ person } />
                 })
               }
             </Col>
           </Row>
         }
-        { person.vehicles.length > 0 &&
+        { film.planets.length > 0 &&
+          <Row>
+            <Col xs={12} md={12} sm={12} lg={12}>
+              <h4>Planets</h4>
+            </Col>
+            <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
+              { 
+                film.planets.map((planet) => {
+                  return <PlanetIcon key={ planet } link={ planet } />
+                })
+              } 
+            </Col>
+          </Row>
+        }
+        { film.vehicles.length > 0 &&
           <Row>
             <Col xs={12} md={12} sm={12} lg={12}>
               <h4>Vehicles</h4>
             </Col>
             <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
               { 
-                person.vehicles.map((vehicle) => {
+                film.vehicles.map((vehicle) => {
                   return <VehicleIcon key={ vehicle } link={ vehicle } />
                 })
               } 
             </Col>
           </Row>
         }
-        { person.starships.length > 0 &&
+        { film.starships.length > 0 &&
           <Row>
             <Col xs={12} md={12} sm={12} lg={12}>
               <h4>Starships</h4>
             </Col>
             <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
               { 
-                person.starships.map((starship) => {
+                film.starships.map((starship) => {
                   return <StarshipIcon key={ starship } link={ starship } />
                 })
               }
             </Col>
-          </Row> 
+          </Row>
+        } 
+        { film.species.length > 0 &&
+          <Row>
+            <Col xs={12} md={12} sm={12} lg={12}>
+              <h4>Species</h4>
+            </Col>
+            <Col xs={12} md={12} sm={12} lg={12} className="flex-container-wrapper">
+              { 
+                film.species.map((species) => {
+                  return (<RowLinkParser key= { species } link={ species }/>)
+                })
+              }
+            </Col>
+          </Row>
         }
+        
       </Panel>
     );
   };

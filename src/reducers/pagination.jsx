@@ -1,9 +1,9 @@
 import { PeopleActionTypes } from '../actions/people'
 import { FilmsActionTypes } from '../actions/films'
-import { PlanetsActionTypes } from '../actions/Planets'
-import { SpeciesActionTypes } from '../actions/Species'
-import { StarshipsActionTypes } from '../actions/Starships'
-import { VehiclesActionTypes } from '../actions/Vehicles'
+import { PlanetsActionTypes } from '../actions/planets'
+import { SpeciesActionTypes } from '../actions/species'
+import { StarshipsActionTypes } from '../actions/starships'
+import { VehiclesActionTypes } from '../actions/vehicles'
 
 export default function pagination(state = {companies_paging:{ids: []}}, action) {
   switch (action.type) {
@@ -16,35 +16,35 @@ export default function pagination(state = {companies_paging:{ids: []}}, action)
       })
     case FilmsActionTypes.READ_FILMS_SUCCESS:
       return Object.assign({}, state, {
-        people_paging:{
+        films_paging:{
           ids: action.response.result,
           next_url: action.response.next
         }
       })
     case PlanetsActionTypes.READ_PLANETS_SUCCESS:
       return Object.assign({}, state, {
-        people_paging:{
+        planets_paging:{
           ids: action.response.result,
           next_url: action.response.next
         }
       })
     case SpeciesActionTypes.READ_SPECIES_LIST_SUCCESS:
       return Object.assign({}, state, {
-        people_paging:{
+        species_paging:{
           ids: action.response.result,
           next_url: action.response.next
         }
       })
     case StarshipsActionTypes.READ_STARSHIPS_SUCCESS:
       return Object.assign({}, state, {
-        people_paging:{
+        starships_paging:{
           ids: action.response.result,
           next_url: action.response.next
         }
       })
     case VehiclesActionTypes.READ_VEHICLES_SUCCESS:
       return Object.assign({}, state, {
-        people_paging:{
+        vehicles_paging:{
           ids: action.response.result,
           next_url: action.response.next
         }

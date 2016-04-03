@@ -3,11 +3,11 @@ import DocumentMeta from 'react-document-meta';
 import { TitleMetaContent, DescriptionMetaContent, KeywordsMetaContent } from 'utils/constants';
 
 import { Col, Row } from 'react-bootstrap';
-import { PersonDetail } from 'components/PersonDetail';
+import { VehicleDetail } from 'components/VehicleDetail';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loadReadPerson } from 'actions/people'
+import { loadReadVehicle } from 'actions/vehicles'
 
 import { styles } from './styles.scss';
 
@@ -24,19 +24,19 @@ const metaData = {
 
 function mapStateToProps(state) {
   const {
-    entities: { people }
+    entities: { vehicles }
   } = state;
   
   return {
-    people
+    vehicles
   }
 }
 
 @connect(
   mapStateToProps,
-  dispatch => bindActionCreators({ loadReadPerson }, dispatch)
+  dispatch => bindActionCreators({ loadReadVehicle }, dispatch)
 )
-export class PeopleDetailsPage extends Component {
+export class VehiclesDetailsPage extends Component {
     constructor(props) {
       super(props);
     }
@@ -44,37 +44,37 @@ export class PeopleDetailsPage extends Component {
     componentWillMount() {
       const {
         params,
-        loadReadPerson
+        loadReadVehicle
       } = this.props;
 
-      loadReadPerson(params.id);
+      loadReadVehicle(params.id);
     }
 
     componentDidUpdate(prevProps) {
       const {
         params,
-        loadReadPerson
+        loadReadVehicle
       } = this.props;
     
-      let oldPersonId = prevProps.params.id;
-      let newPersonId = params.id;
-      if (newPersonId !== oldPersonId) {
-        loadReadPerson(newPersonId);
+      let oldVehicleId = prevProps.params.id;
+      let newVehicleId = params.id;
+      if (newVehicleId !== oldVehicleId) {
+        loadReadVehicle(newVehicleId);
       }
     }
 
   render() {  
     const {
       params,
-      people
+      vehicles
     } = this.props;
 
-    if (!people ) {
+    if (!vehicles ) {
       return(<div>Loading</div>);
     }
 
-    let person = people[params.id];
-    if (!person) {
+    let vehicle = vehicles[params.id];
+    if (!vehicle) {
       return(<div>Loading</div>);
     }
 
@@ -86,7 +86,7 @@ export class PeopleDetailsPage extends Component {
           <div className="container">
             <Row>
               <Col xs={6} md={6} sm={6} lg={6} xsOffset={3} mdOffset={3} smOffset={3} lgOffset={3}>
-                <PersonDetail person={ person } />
+                <VehicleDetail vehicle={ vehicle } />
               </Col>
             </Row>
           </div>

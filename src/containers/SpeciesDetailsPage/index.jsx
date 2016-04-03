@@ -3,11 +3,11 @@ import DocumentMeta from 'react-document-meta';
 import { TitleMetaContent, DescriptionMetaContent, KeywordsMetaContent } from 'utils/constants';
 
 import { Col, Row } from 'react-bootstrap';
-import { PersonDetail } from 'components/PersonDetail';
+import { SpeciesDetail } from 'components/SpeciesDetail';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loadReadPerson } from 'actions/people'
+import { loadReadSpecies } from 'actions/species'
 
 import { styles } from './styles.scss';
 
@@ -24,19 +24,19 @@ const metaData = {
 
 function mapStateToProps(state) {
   const {
-    entities: { people }
+    entities: { species }
   } = state;
   
   return {
-    people
+    speciesList: species
   }
 }
 
 @connect(
   mapStateToProps,
-  dispatch => bindActionCreators({ loadReadPerson }, dispatch)
+  dispatch => bindActionCreators({ loadReadSpecies }, dispatch)
 )
-export class PeopleDetailsPage extends Component {
+export class SpeciesDetailsPage extends Component {
     constructor(props) {
       super(props);
     }
@@ -44,40 +44,42 @@ export class PeopleDetailsPage extends Component {
     componentWillMount() {
       const {
         params,
-        loadReadPerson
+        loadReadSpecies
       } = this.props;
 
-      loadReadPerson(params.id);
+      loadReadSpecies(params.id);
     }
 
     componentDidUpdate(prevProps) {
       const {
         params,
-        loadReadPerson
+        loadReadSpecies
       } = this.props;
     
-      let oldPersonId = prevProps.params.id;
-      let newPersonId = params.id;
-      if (newPersonId !== oldPersonId) {
-        loadReadPerson(newPersonId);
+      let oldSpeciesId = prevProps.params.id;
+      let newSpeciesId = params.id;
+      if (newSpeciesId !== oldSpeciesId) {
+        loadReadSpecies(newSpeciesId);
       }
     }
 
   render() {  
     const {
       params,
-      people
+      speciesList
     } = this.props;
 
-    if (!people ) {
+    if (!speciesList ) {
       return(<div>Loading</div>);
     }
 
-    let person = people[params.id];
-    if (!person) {
+
+
+    let species = speciesList[params.id];
+    if (!species) {
       return(<div>Loading</div>);
     }
-
+    
     return (
       <section className={`${styles}`}>       
         <DocumentMeta {...metaData} />
@@ -86,7 +88,7 @@ export class PeopleDetailsPage extends Component {
           <div className="container">
             <Row>
               <Col xs={6} md={6} sm={6} lg={6} xsOffset={3} mdOffset={3} smOffset={3} lgOffset={3}>
-                <PersonDetail person={ person } />
+                <SpeciesDetail species={ species } />
               </Col>
             </Row>
           </div>
