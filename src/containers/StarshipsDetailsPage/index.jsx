@@ -85,7 +85,7 @@ export class StarshipsDetailsPage extends Component {
         <div className="page-container">
           <div className="container">
             <Row>
-              <Col xs={6} md={6} sm={6} lg={6} xsOffset={3} mdOffset={3} smOffset={3} lgOffset={3}>
+              <Col xs={12} md={12} sm={12} lg={6} lgOffset={3}>
                 <StarshipDetail starship={ starship } />
               </Col>
             </Row>

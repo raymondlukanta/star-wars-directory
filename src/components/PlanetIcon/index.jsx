@@ -17,7 +17,7 @@ export class PlanetIcon extends Component {
 
     let id = link.split("/")[5];
 
-    let child = (<Avatar className="avatar"  color="#000000" round={ true } name={ id } />);
+    let child = (<Avatar className="avatar" size={70} color="#000000" round={ true } name={ id } />);
     return (
       <div className={`${styles}`}>
         <RowLinkParser link={ link } child={ child }/>

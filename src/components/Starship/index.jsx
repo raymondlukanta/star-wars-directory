@@ -21,7 +21,7 @@ export class Starship extends Component {
       <Row>
         <Col xs={12} md={12} sm={12} lg={3}>
           <div className="avatar-wrapper">
-            <Avatar className="avatar"  color="#000000" round={ true } name={ starship.name } />
+            <Avatar className="avatar"  color="#000000" round={ false } name={ starship.name } />
           </div>  
         </Col>
         <Col xs={12} md={12} sm={12} lg={9}>

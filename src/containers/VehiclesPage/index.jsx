@@ -70,17 +70,17 @@ export class VehiclesPage extends Component {
         <div className="page-container">
           <div className="container">
             <Row>
-              <Col xs={6} md={6} sm={6} lg={6} xsOffset={3} mdOffset={3} smOffset={3} lgOffset={3}>
+              <Col xs={12} md={12} sm={12} lg={6} lgOffset={3}>
                 <ListGroup>
-                <InfiniteScroll
-                  pageStart= "1"
-                  loadMore= { this._handleLoadMore }
-                  hasMore= { vehiclesPaging.next_url }
-                  loader= {<div className="loader">Loading ...</div>}>
-                    {
-                     Object.keys(vehicles).map((id) => <Vehicle key={ id } vehicle={vehicles[id]}/>)
-                    }
-                </InfiniteScroll>
+                  <InfiniteScroll
+                    pageStart= "1"
+                    loadMore= { this._handleLoadMore }
+                    hasMore= { vehiclesPaging.next_url }
+                    loader= {<div className="loader">Loading ...</div>}>
+                      {
+                       Object.keys(vehicles).map((id) => <Vehicle key={ id } vehicle={vehicles[id]}/>)
+                      }
+                  </InfiniteScroll>
                 </ListGroup>
               </Col>
             </Row>

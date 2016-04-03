@@ -17,7 +17,7 @@ export class StarshipIcon extends Component {
 
     let id = link.split("/")[5];
 
-    let child = (<Avatar className="avatar"  color="#000000" round={ false } name={ id } />);
+    let child = (<Avatar className="avatar"  color="#000000" size={70} round={ false }  name={ id } />);
     return (
       <div className={`${styles}`}>
         <RowLinkParser link={ link } child={ child }/>

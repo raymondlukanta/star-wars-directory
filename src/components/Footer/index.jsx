@@ -10,7 +10,7 @@ export class Footer extends Component {
         <div className="container">
           <div className="row">
             <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
-              (c) 2016 MTFBWY
+              &copy; 2016 MTFBWY
             </div>
           </div>
         </div>

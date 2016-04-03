@@ -16,7 +16,7 @@ export class PersonIcon extends Component {
     } = this.props;
 
     let id = link.split("/")[5];
-    let child = (<Avatar className="avatar"  color="#000000" round={ true } name={ id } />);
+    let child = (<Avatar className="avatar" size={50} color="#000000" round={ true } name={ id } />);
     return (
       <div className={`${styles}`}>
         <RowLinkParser link={ link } child={ child }/>

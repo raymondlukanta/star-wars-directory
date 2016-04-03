@@ -17,7 +17,9 @@ export class Person extends Component {
       <ListGroupItem className={`${styles}`}>
         <Row>
           <Col xs={12} md={12} sm={12} lg={3}>
-            <Avatar className="avatar" color="#000000" round={ true } name={ person.name } />
+            <div className="avatar-wrapper">
+              <Avatar className="avatar" color="#000000" round={ true } name={ person.name } />
+            </div>
           </Col>
           <Col xs={12} md={12} sm={12} lg={9}>
             <Row>
