@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { Button, Col, Image, ListGroupItem, Row } from 'react-bootstrap';
-import Avatar from 'react-avatar'
+import Avatar from 'react-avatar';
 
 import { styles } from './styles.scss';
 

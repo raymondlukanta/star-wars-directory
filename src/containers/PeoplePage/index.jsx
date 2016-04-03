@@ -8,7 +8,7 @@ import { Person } from 'components/Person';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { loadReadPeopleList } from 'actions/people'
+import { loadReadPeopleList } from 'actions/people';
 
 import { styles } from './styles.scss';
 
@@ -29,11 +29,12 @@ function mapStateToProps(state) {
   const {
     entities: { people },
     pagination: { people_paging }
-  } = state
+  } = state;
+
   return {
     people,
     peoplePaging: people_paging
-  }
+  };
 }
 
 @connect(
@@ -58,7 +59,7 @@ export class PeoplePage extends Component {
     const {
        people,
        peoplePaging
-    } = this.props
+    } = this.props;
 
     if (!people || !peoplePaging) {
       return(<div>Loading</div>)
@@ -78,7 +79,6 @@ export class PeoplePage extends Component {
                   hasMore= { peoplePaging.next_url }
                   loader= {<div className="loader">Loading ...</div>}>
                     {
-                      people && 
                      Object.keys(people).map((id) => <Person key={ id } person={people[id]}/>)
                     }
                 </InfiniteScroll>

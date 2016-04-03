@@ -5,10 +5,14 @@ import { RowLinkParser } from 'components/RowLinkParser';
 import { FilmIcon } from 'components/FilmIcon';
 import { VehicleIcon } from 'components/VehicleIcon';
 import { StarshipIcon } from 'components/StarshipIcon';
-import Avatar from 'react-avatar'
+import Avatar from 'react-avatar';
 import { styles } from './styles.scss';
 
 export class PersonDetail extends Component {
+  static propTypes = {
+    person: PropTypes.object.isRequired
+  };
+
   render() {
     const { 
       person

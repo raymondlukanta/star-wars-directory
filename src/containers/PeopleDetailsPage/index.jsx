@@ -28,7 +28,8 @@ const metaData = {
 function mapStateToProps(state) {
   const {
     entities: { people }
-  } = state
+  } = state;
+  
   return {
     people
   }
@@ -48,9 +49,9 @@ export class PeopleDetailsPage extends Component {
         params,
         people,
         loadReadPerson
-      } = this.props
+      } = this.props;
 
-      loadReadPerson(params.id)
+      loadReadPerson(params.id);
     }
 
     componentDidUpdate(prevProps) {
@@ -58,12 +59,12 @@ export class PeopleDetailsPage extends Component {
         params,
         people,
         loadReadPerson
-      } = this.props
+      } = this.props;
     
-      let oldPersonId = prevProps.params.id
-      let newPersonId = params.id
+      let oldPersonId = prevProps.params.id;
+      let newPersonId = params.id;
       if (newPersonId !== oldPersonId) {
-        loadReadPerson(newPersonId)
+        loadReadPerson(newPersonId);
       }
     }
 
@@ -71,12 +72,17 @@ export class PeopleDetailsPage extends Component {
     const {
       params,
       people
-    } = this.props
+    } = this.props;
 
-    if (!people) {
-      return(<div>Loading</div>)
+    if (!people ) {
+      return(<div>Loading</div>);
     }
-    let person = people[params.id]
+
+    let person = people[params.id];
+    if (!person) {
+      return(<div>Loading</div>);
+    }
+
     return (
       <section className={`${styles}`}>       
         <DocumentMeta {...metaData} />

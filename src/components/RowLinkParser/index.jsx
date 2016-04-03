@@ -15,8 +15,8 @@ export class RowLinkParser extends Component {
     } = this.props;
 
     let splittedLink = link.split("/");
-    let entity = splittedLink[4]
-    let id = splittedLink[5]
+    let entity = splittedLink[4];
+    let id = splittedLink[5];
 
     return (
       <Row>

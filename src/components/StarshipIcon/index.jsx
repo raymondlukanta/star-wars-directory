@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Col, Image, Row } from 'react-bootstrap';
 import { RowLinkParser } from 'components/RowLinkParser';
 import { styles } from './styles.scss';
-import Avatar from 'react-avatar'
+import Avatar from 'react-avatar';
 
 export class StarshipIcon extends Component {
   static propTypes = {
@@ -17,7 +17,7 @@ export class StarshipIcon extends Component {
 
     let id = link.split("/")[5];
 
-    let child = (<Avatar className="avatar"  color="#000000" round={ false } name={ id } />)
+    let child = (<Avatar className="avatar"  color="#000000" round={ false } name={ id } />);
     return (
       <div className={`${styles}`}>
         <RowLinkParser link={ link } child={ child }/>
