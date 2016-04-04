@@ -1,6 +1,6 @@
 {
   "name": "star-wars-directory",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Directory of Star Wars",
  "scripts": {
     "clean": "rimraf dist",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/raymondlukanta/star-wars-directory"
   },
   "authors": [
     "Raymond Lukanta (https://github.com/raymondlukanta)"
@@ -77,6 +77,9 @@
     "keymirror": "^0.1.1",
     "lodash": "^3.10.1",
     "moment": "^2.10.6",
-    "normalizr": "^1.0.0"
+    "normalizr": "^1.0.0",
+    "react-infinite-scroll": "^0.1.5",
+    "react-avatar": "^0.7.2",
+    "firebase": "^2.4.2"
   }
 }

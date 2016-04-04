@@ -1,0 +1,17 @@
+:local(.styles) {
+  .avatar-wrapper {
+  	display: block;
+  	text-align: center;
+  	margin-bottom: 15px;
+  }
+
+  .flex-container-wrapper {
+  	display: flex;
+ 	justify-content: space-around;
+ 	flex-wrap: wrap; 
+  }
+
+  h4 {
+    text-align: center;
+  }
+}

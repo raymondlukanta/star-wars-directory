@@ -1,0 +1,38 @@
+:local(.styles) {
+  position: fixed;
+  z-index: 3;
+
+  width: 100%;
+
+  header {
+    padding: 20px 0;
+    opacity: 1;
+
+    background: black;
+    
+    a {
+      color: #FFF;
+    }
+  }
+
+  .logo {
+
+    a {
+      font-weight: bold;
+    }
+  }
+  
+  nav {
+
+    a {
+      margin-right: 20px;
+      
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .message {
+  }
+}
